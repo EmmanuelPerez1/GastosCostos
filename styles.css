@@ -32,13 +32,13 @@ footer {
 }
 
 
-/* Button desing and input tag */
+/* Button and input tag design */
 
 input {
     border: 2px solid black;
     border-radius: 10%;
     padding: .4em;
-    width: 70%;
+    width: 30%;
 }
 
 button {
