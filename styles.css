@@ -12,18 +12,66 @@
     background-color: aqua;
 }
 
+footer {
+    text-align: center;
+    font-style: italic bold;
+}
+
+#logexpenses,
+#logentries {
+    margin: 1px solid black;
+}
+
 #logexpenses,
 #logentries,
 #newexpenses,
-#newentries,
-footer>div>p {
+#newentries {
     margin: 1em;
     padding: 1em;
     text-align: center;
 }
 
+
+/* Button desing and input tag */
+
 input {
     border: 2px solid black;
     border-radius: 10%;
-    padding: .3em;
+    padding: .4em;
+    width: 70%;
+}
+
+button {
+    height: 1.5em;
+    width: 25%;
+    background-color: cyan;
+    font-size: 1.5em;
+}
+
+
+/* Css for the grid layout to the main html tags */
+
+main {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+#logexpenses {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+#logentries {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+#newexpenses {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+#newentries {
+    grid-column: 2;
+    grid-row: 2;
 }
