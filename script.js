@@ -1,3 +1,8 @@
+const Incomes = [];
+const Expenses = [];
+const Expenses2 = { "Juan": "" };
+console.log(Expenses2);
+
 function createNewIncomes(...values) {
     // if (nameIncome == '' || isNaN(cuantityIncome)) return false;
     // return createObject(nameIncome, cuantityIncome, dateIncome);
@@ -26,24 +31,35 @@ function createObject(...value) {
     for (const key of value) {
         newObject[key] = key;
     }
-    console.log(newObject);
+    // console.log(newObject);
     return newObject;
 }
 
-function addNewIncomes(nameIncome, cuantityIncome, dateIncome) {
+function addNewIncomes(newIncome) {
+    Incomes.push(newIncome);
+    console.log(Incomes);
+}
+
+function addNewExits(newExits) {
+    Expenses.push(newExits);
+    console.log(Expenses);
+}
+
+function logIncome(incomes) {
 
 }
 
-function addNewExits(nameExit, cuantityExit, dateExit) {
-
-}
-
-function logIncome(arrayLogIncome) {
-
-}
-
-function logIncome(arrayLogExits) {
-
+function logExit(arrayLogExits) {
+    const Log = document.querySelector("#logexpenses");
+    for (let index = 0; index < arrayLogExits.length; index++) {
+        // const expense = Expenses[index];
+        var i = arrayLogExits[index];
+        // for (const key in arrayLogExits) {
+        console.log(i);
+        Log.innerHTML = '<p>' + i[index] + '</p>';
+        console.log(i[index]);
+        // }
+    }
 }
 
 function dateOfCreation() {
@@ -69,11 +85,14 @@ btnNewExpenses.addEventListener('click', (e) => {
     var inputCuantityExpense = document.querySelector('#cuantityExpense').value;
     var inputNameExpense = document.querySelector('#nameExpense').value;
     var dateNewExpense = dateOfCreation();
+    // Create the new Expense
     const nNI = createNewExpense(inputNameExpense, inputCuantityExpense, dateNewExpense);
-    // console.log(nNI.value);
     for (const key in nNI) {
         console.log(key);
     }
+    // Adds the new EXIT no the array of EXITS
+    addNewExits(nNI);
+    logExit(Expenses);
 });
 
 btnNewIncomes.addEventListener('click', (e) => {
@@ -85,4 +104,6 @@ btnNewIncomes.addEventListener('click', (e) => {
     for (const key in nNE) {
         console.log(key);
     }
+    // Adds the new Income no the array of Income
+    addNewExits(nNE);
 });
