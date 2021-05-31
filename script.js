@@ -1,7 +1,5 @@
 const Incomes = [];
 const Expenses = [];
-const Expenses2 = { "Juan": "" };
-console.log(Expenses2);
 
 function createNewIncomes(...values) {
     // if (nameIncome == '' || isNaN(cuantityIncome)) return false;
@@ -45,22 +43,34 @@ function addNewExits(newExits) {
     console.log(Expenses);
 }
 
-function logIncome(incomes) {
-
-}
-
-function logExit(arrayLogExits) {
-    const Log = document.querySelector("#logexpenses");
-    for (let index = 0; index < arrayLogExits.length; index++) {
-        // const expense = Expenses[index];
-        var i = arrayLogExits[index];
-        // for (const key in arrayLogExits) {
-        console.log(i);
-        Log.innerHTML = '<p>' + i[index] + '</p>';
-        console.log(i[index]);
-        // }
+function logIncome(newIncomes) {
+    const Log = document.querySelector("#logentries");
+    for (const key in newIncomes) {
+        console.log(key);
+        Log.insertAdjacentHTML("beforeend", '<p>' + key + '</p>');
     }
 }
+
+function logExit(newExit) {
+    const Log = document.querySelector("#logexpenses");
+    for (const key in newExit) {
+        console.log(key);
+        Log.insertAdjacentHTML("beforeend", '<p>' + key + '</p>');
+    }
+}
+
+// Functio that print every object inside the Array expanses or incomes
+// function logExit(arrayLogExits) {
+//     const Log = document.querySelector("#logexpenses");
+//     for (let index = 0; index < arrayLogExits.length; index++) {
+//         var i = arrayLogExits[index];
+//         console.log(i);
+//         for (const key in i) {
+//             console.log(key);
+//             Log.insertAdjacentHTML("beforeend", '<p>' + key + '</p>');
+//         }
+//     }
+// }
 
 function dateOfCreation() {
     var dOC = new Date();
@@ -69,7 +79,7 @@ function dateOfCreation() {
     return date;
 }
 
-// Todo: Print graph to give a better way to analize the net income
+// TODO:Print graph to give a better way to analize the net income
 // function printGrapg(arrayLogIncome, arrayLogExits) {}
 
 // Buttons functionality
@@ -92,7 +102,7 @@ btnNewExpenses.addEventListener('click', (e) => {
     }
     // Adds the new EXIT no the array of EXITS
     addNewExits(nNI);
-    logExit(Expenses);
+    logExit(nNI);
 });
 
 btnNewIncomes.addEventListener('click', (e) => {
@@ -106,4 +116,5 @@ btnNewIncomes.addEventListener('click', (e) => {
     }
     // Adds the new Income no the array of Income
     addNewExits(nNE);
+    logIncome(nNE);
 });
