@@ -21,31 +21,36 @@ function createObject(...value) {
     return newObject;
 }
 
-function addNewIncomes(newIncome) {
-    Incomes.push(newIncome);
-    console.log(Incomes);
+// function addNewIncomes(newIncome) {
+//     Incomes.push(newIncome);
+//     console.log(Incomes);
+// }
+
+// function addNewExits(newExits) {
+//     Expenses.push(newExits);
+//     console.log(Expenses);
+// }
+
+function addNewToGeneral(newIE, generalCount) {
+    generalCount.push(newIE);
+    console.log(generalCount);
 }
 
-function addNewExits(newExits) {
-    Expenses.push(newExits);
-    console.log(Expenses);
-}
+// function logIncome(newIncomes) {
+//     const Log = document.querySelector("#logentries");
+//     for (const key in newIncomes) {
+//         console.log(key);
+//         Log.insertAdjacentHTML("beforeend", '<p>' + key + '</p>');
+//     }
+// }
 
-function logIncome(newIncomes) {
-    const Log = document.querySelector("#logentries");
-    for (const key in newIncomes) {
-        console.log(key);
-        Log.insertAdjacentHTML("beforeend", '<p>' + key + '</p>');
-    }
-}
-
-function logExit(newExit) {
-    const Log = document.querySelector("#logexpenses");
-    for (const key in newExit) {
-        console.log(key);
-        Log.insertAdjacentHTML("beforeend", '<p>' + key + '</p>');
-    }
-}
+// function logExit(newExit) {
+//     const Log = document.querySelector("#logexpenses");
+//     for (const key in newExit) {
+//         console.log(key);
+//         Log.insertAdjacentHTML("beforeend", '<p>' + key + '</p>');
+//     }
+// }
 
 function newLog(newExit, container) {
     for (const key in newExit) {
@@ -97,8 +102,7 @@ btnNewExpenses.addEventListener('click', (e) => {
         console.log(key);
     }
     // Adds the new EXIT no the array of EXITS
-    addNewExits(nNI);
-    // logExit(nNI);
+    addNewToGeneral(nNI, Expenses);
     newLog(nNI, LogContainer);
 });
 
@@ -113,7 +117,6 @@ btnNewIncomes.addEventListener('click', (e) => {
         console.log(key);
     }
     // Adds the new Income no the array of Income
-    addNewExits(nNE);
-    // logIncome(nNE);
+    addNewToGeneral(nNE, Incomes);
     newLog(nNE, LogContainer);
 });
