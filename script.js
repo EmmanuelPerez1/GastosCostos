@@ -1,27 +1,15 @@
 const Incomes = [];
 const Expenses = [];
+//TODO: Add new global value for incomes and expenses.
 
-function createNewIncomes(...values) {
-    // if (nameIncome == '' || isNaN(cuantityIncome)) return false;
-    // return createObject(nameIncome, cuantityIncome, dateIncome);
-    for (const key in values) {
-        if (key == "" || isNaN(key)) {
-            return false
-        }
-        return createObject(values);
-    }
+function createNewIncomes(inputNameIncomes, inputCuantityIncomes, dateNewIncome) {
+    if (inputNameIncomes == '' || isNaN(inputCuantityIncomes)) return false;
+    return createObject([inputNameIncomes, inputCuantityIncomes, dateNewIncome]);
 }
 
-function createNewExpense(...values) {
-    // nameExpense, cuantityExpense, dateExpense
-    // if (nameIncome == '' || isNaN(cuantityIncome)) return false;
-    // var newExpanse = [nameExpense, cuantityExpense, dateExpense];
-    for (const key in values) {
-        if (key == "" || isNaN(key)) {
-            return false
-        }
-        return createObject(values);
-    }
+function createNewExpense(inputNameExpense, inputCuantityExpense, dateNewExpense) {
+    if (inputNameExpense == '' || isNaN(inputCuantityExpense)) return false;
+    return createObject([inputNameExpense, inputCuantityExpense, dateNewExpense]);
 }
 
 function createObject(...value) {
@@ -59,6 +47,13 @@ function logExit(newExit) {
     }
 }
 
+function newLog(newExit, container) {
+    for (const key in newExit) {
+        console.log(key);
+        container.insertAdjacentHTML("beforeend", '<p>' + key + '</p>');
+    }
+}
+
 // Functio that print every object inside the Array expanses or incomes
 // function logExit(arrayLogExits) {
 //     const Log = document.querySelector("#logexpenses");
@@ -86,7 +81,7 @@ function dateOfCreation() {
 
 const btnNewExpenses = document.querySelector('#nameExpense+button');
 const btnNewIncomes = document.querySelector('#nameEntries+button');
-//Todo: fix the error wich shows every time the button #nameExpense+button shows an error in
+//TODO: fix the error wich shows every time the button #nameExpense+button shows an error in
 // console for not being click what it's press
 
 
@@ -95,6 +90,7 @@ btnNewExpenses.addEventListener('click', (e) => {
     var inputCuantityExpense = document.querySelector('#cuantityExpense').value;
     var inputNameExpense = document.querySelector('#nameExpense').value;
     var dateNewExpense = dateOfCreation();
+    var LogContainer = document.querySelector('#logexpenses');
     // Create the new Expense
     const nNI = createNewExpense(inputNameExpense, inputCuantityExpense, dateNewExpense);
     for (const key in nNI) {
@@ -102,13 +98,15 @@ btnNewExpenses.addEventListener('click', (e) => {
     }
     // Adds the new EXIT no the array of EXITS
     addNewExits(nNI);
-    logExit(nNI);
+    // logExit(nNI);
+    newLog(nNI, LogContainer);
 });
 
 btnNewIncomes.addEventListener('click', (e) => {
     e.preventDefault();
     var inputCuantityEntrie = document.querySelector('#cuantityEntrie').value;
     var inputNameEntrie = document.querySelector('#nameEntries').value;
+    var LogContainer = document.querySelector('#logentries');
     var dateNewEntrie = dateOfCreation();
     const nNE = createNewIncomes(inputNameEntrie, inputCuantityEntrie, dateNewEntrie);
     for (const key in nNE) {
@@ -116,5 +114,6 @@ btnNewIncomes.addEventListener('click', (e) => {
     }
     // Adds the new Income no the array of Income
     addNewExits(nNE);
-    logIncome(nNE);
+    // logIncome(nNE);
+    newLog(nNE, LogContainer);
 });
